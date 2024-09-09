@@ -35,6 +35,8 @@
 		4D0104DD2C8F5E1F00ECC702 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D0104C82C8F5E1F00ECC702 /* OFL.txt */; };
 		4D0104DE2C8F5E1F00ECC702 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D0104C92C8F5E1F00ECC702 /* README.txt */; };
 		4D0104E12C8F5ED400ECC702 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E02C8F5ED400ECC702 /* UIFont+Ext.swift */; };
+		4D0104E32C8F6F2E00ECC702 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E22C8F6F2E00ECC702 /* UIColor+Ext.swift */; };
+		4D0104E62C8F703B00ECC702 /* AccentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E52C8F703B00ECC702 /* AccentColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		4D0104C82C8F5E1F00ECC702 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		4D0104C92C8F5E1F00ECC702 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		4D0104E02C8F5ED400ECC702 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
+		4D0104E22C8F6F2E00ECC702 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		4D0104E52C8F703B00ECC702 /* AccentColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		4D0104862C8F5B8C00ECC702 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D0104E42C8F6FAB00ECC702 /* Colors */,
 				4D0104DF2C8F5EC200ECC702 /* Extensions */,
 				4D0104872C8F5D9700ECC702 /* Fonts */,
 			);
@@ -177,8 +182,17 @@
 			isa = PBXGroup;
 			children = (
 				4D0104E02C8F5ED400ECC702 /* UIFont+Ext.swift */,
+				4D0104E22C8F6F2E00ECC702 /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4D0104E42C8F6FAB00ECC702 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				4D0104E52C8F703B00ECC702 /* AccentColors.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,10 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D0104E32C8F6F2E00ECC702 /* UIColor+Ext.swift in Sources */,
 				4D0104E12C8F5ED400ECC702 /* UIFont+Ext.swift in Sources */,
 				4D0104702C8F5A2B00ECC702 /* ViewController.swift in Sources */,
 				4D0104832C8F5B5E00ECC702 /* SceneFactory.swift in Sources */,
 				4D0104802C8F5B1F00ECC702 /* TabBarController.swift in Sources */,
+				4D0104E62C8F703B00ECC702 /* AccentColors.swift in Sources */,
 				4D01046C2C8F5A2B00ECC702 /* AppDelegate.swift in Sources */,
 				4D01046E2C8F5A2B00ECC702 /* SceneDelegate.swift in Sources */,
 			);
