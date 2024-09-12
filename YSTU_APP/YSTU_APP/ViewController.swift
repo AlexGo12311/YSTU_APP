@@ -7,26 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BaseController: UIViewController {
     
-    private let label: UILabel = {
-        let label = UILabel()
-        label.text = "Hello, World"
-        label.font = .Montserrat.Light.size(of: 48)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
-        view.addSubview(label)
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        ])
+        addViews()
+        layoutViews()
+        configure()
     }
 
 
 }
 
+@objc extension BaseController {
+    func addViews() {}
+    func layoutViews() {}
+    func configure() {
+        view.backgroundColor = .systemBackground
+    }
+}

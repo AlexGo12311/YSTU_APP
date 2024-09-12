@@ -37,6 +37,14 @@
 		4D0104E12C8F5ED400ECC702 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E02C8F5ED400ECC702 /* UIFont+Ext.swift */; };
 		4D0104E32C8F6F2E00ECC702 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E22C8F6F2E00ECC702 /* UIColor+Ext.swift */; };
 		4D0104E62C8F703B00ECC702 /* AccentColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E52C8F703B00ECC702 /* AccentColors.swift */; };
+		4D0104E82C90772800ECC702 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E72C90772800ECC702 /* Coordinator.swift */; };
+		4D0104EA2C907A8600ECC702 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104E92C907A8600ECC702 /* AppCoordinator.swift */; };
+		4D0104EC2C9082AE00ECC702 /* ScheduleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104EB2C9082AD00ECC702 /* ScheduleCoordinator.swift */; };
+		4D0104EE2C90948000ECC702 /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104ED2C90948000ECC702 /* ScheduleController.swift */; };
+		4D0104F02C9096DF00ECC702 /* MarksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104EF2C9096DF00ECC702 /* MarksController.swift */; };
+		4D0104F22C90970900ECC702 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104F12C90970900ECC702 /* ProfileController.swift */; };
+		4D0104F42C90972A00ECC702 /* MarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104F32C90972A00ECC702 /* MarksCoordinator.swift */; };
+		4D0104F62C90973900ECC702 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104F52C90973900ECC702 /* ProfileCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +80,14 @@
 		4D0104E02C8F5ED400ECC702 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		4D0104E22C8F6F2E00ECC702 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		4D0104E52C8F703B00ECC702 /* AccentColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColors.swift; sourceTree = "<group>"; };
+		4D0104E72C90772800ECC702 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4D0104E92C907A8600ECC702 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		4D0104EB2C9082AD00ECC702 /* ScheduleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoordinator.swift; sourceTree = "<group>"; };
+		4D0104ED2C90948000ECC702 /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
+		4D0104EF2C9096DF00ECC702 /* MarksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarksController.swift; sourceTree = "<group>"; };
+		4D0104F12C90970900ECC702 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		4D0104F32C90972A00ECC702 /* MarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarksCoordinator.swift; sourceTree = "<group>"; };
+		4D0104F52C90973900ECC702 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +138,11 @@
 		4D0104842C8F5B6C00ECC702 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				4D0104E72C90772800ECC702 /* Coordinator.swift */,
+				4D0104E92C907A8600ECC702 /* AppCoordinator.swift */,
+				4D0104EB2C9082AD00ECC702 /* ScheduleCoordinator.swift */,
+				4D0104F32C90972A00ECC702 /* MarksCoordinator.swift */,
+				4D0104F52C90973900ECC702 /* ProfileCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -129,6 +150,9 @@
 		4D0104852C8F5B7C00ECC702 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D0104ED2C90948000ECC702 /* ScheduleController.swift */,
+				4D0104EF2C9096DF00ECC702 /* MarksController.swift */,
+				4D0104F12C90970900ECC702 /* ProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,12 +311,20 @@
 			files = (
 				4D0104E32C8F6F2E00ECC702 /* UIColor+Ext.swift in Sources */,
 				4D0104E12C8F5ED400ECC702 /* UIFont+Ext.swift in Sources */,
+				4D0104EA2C907A8600ECC702 /* AppCoordinator.swift in Sources */,
 				4D0104702C8F5A2B00ECC702 /* ViewController.swift in Sources */,
 				4D0104832C8F5B5E00ECC702 /* SceneFactory.swift in Sources */,
 				4D0104802C8F5B1F00ECC702 /* TabBarController.swift in Sources */,
 				4D0104E62C8F703B00ECC702 /* AccentColors.swift in Sources */,
+				4D0104F22C90970900ECC702 /* ProfileController.swift in Sources */,
+				4D0104F62C90973900ECC702 /* ProfileCoordinator.swift in Sources */,
 				4D01046C2C8F5A2B00ECC702 /* AppDelegate.swift in Sources */,
+				4D0104F02C9096DF00ECC702 /* MarksController.swift in Sources */,
+				4D0104EE2C90948000ECC702 /* ScheduleController.swift in Sources */,
 				4D01046E2C8F5A2B00ECC702 /* SceneDelegate.swift in Sources */,
+				4D0104F42C90972A00ECC702 /* MarksCoordinator.swift in Sources */,
+				4D0104EC2C9082AE00ECC702 /* ScheduleCoordinator.swift in Sources */,
+				4D0104E82C90772800ECC702 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
