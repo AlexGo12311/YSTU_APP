@@ -63,5 +63,10 @@ class Coordinator: CoordinatorProtocol {
         self.finishDelegate = finishDelegate
     }
     
+    deinit {
+        self.childCoordinators.forEach { $0.finishDelegate = nil }
+        self.childCoordinators.removeAll()
+    }
+    
     
 }
