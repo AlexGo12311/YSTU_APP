@@ -23,6 +23,6 @@ class BaseController: UIViewController {
     func addViews() {}
     func layoutViews() {}
     func configure() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = AccentColors.bgColor
     }
 }
