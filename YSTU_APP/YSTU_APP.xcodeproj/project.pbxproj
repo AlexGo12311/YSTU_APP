@@ -45,6 +45,9 @@
 		4D0104F22C90970900ECC702 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104F12C90970900ECC702 /* ProfileController.swift */; };
 		4D0104F42C90972A00ECC702 /* MarksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104F32C90972A00ECC702 /* MarksCoordinator.swift */; };
 		4D0104F62C90973900ECC702 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104F52C90973900ECC702 /* ProfileCoordinator.swift */; };
+		4D0105282CA1DD5700ECC702 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0105272CA1DD5700ECC702 /* APICaller.swift */; };
+		4D01052B2CA32E1B00ECC702 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01052A2CA32E1B00ECC702 /* Lesson.swift */; };
+		4D40CB5D2CA71EBC00303D01 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40CB5C2CA71EBC00303D01 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,9 @@
 		4D0104F12C90970900ECC702 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		4D0104F32C90972A00ECC702 /* MarksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarksCoordinator.swift; sourceTree = "<group>"; };
 		4D0104F52C90973900ECC702 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		4D0105272CA1DD5700ECC702 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		4D01052A2CA32E1B00ECC702 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		4D40CB5C2CA71EBC00303D01 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 		4D01045F2C8F5A2B00ECC702 = {
 			isa = PBXGroup;
 			children = (
+				4D0105292CA32DFB00ECC702 /* Models */,
+				4D0105262CA1DD3400ECC702 /* Managers */,
 				4D0104862C8F5B8C00ECC702 /* Resources */,
 				4D0104852C8F5B7C00ECC702 /* Controllers */,
 				4D0104842C8F5B6C00ECC702 /* Coordinators */,
@@ -207,6 +215,7 @@
 			children = (
 				4D0104E02C8F5ED400ECC702 /* UIFont+Ext.swift */,
 				4D0104E22C8F6F2E00ECC702 /* UIColor+Ext.swift */,
+				4D40CB5C2CA71EBC00303D01 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +226,22 @@
 				4D0104E52C8F703B00ECC702 /* AccentColors.swift */,
 			);
 			path = Colors;
+			sourceTree = "<group>";
+		};
+		4D0105262CA1DD3400ECC702 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4D0105272CA1DD5700ECC702 /* APICaller.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4D0105292CA32DFB00ECC702 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D01052A2CA32E1B00ECC702 /* Lesson.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,11 +343,14 @@
 				4D0104E62C8F703B00ECC702 /* AccentColors.swift in Sources */,
 				4D0104F22C90970900ECC702 /* ProfileController.swift in Sources */,
 				4D0104F62C90973900ECC702 /* ProfileCoordinator.swift in Sources */,
+				4D40CB5D2CA71EBC00303D01 /* String+Ext.swift in Sources */,
+				4D01052B2CA32E1B00ECC702 /* Lesson.swift in Sources */,
 				4D01046C2C8F5A2B00ECC702 /* AppDelegate.swift in Sources */,
 				4D0104F02C9096DF00ECC702 /* MarksController.swift in Sources */,
 				4D0104EE2C90948000ECC702 /* ScheduleController.swift in Sources */,
 				4D01046E2C8F5A2B00ECC702 /* SceneDelegate.swift in Sources */,
 				4D0104F42C90972A00ECC702 /* MarksCoordinator.swift in Sources */,
+				4D0105282CA1DD5700ECC702 /* APICaller.swift in Sources */,
 				4D0104EC2C9082AE00ECC702 /* ScheduleCoordinator.swift in Sources */,
 				4D0104E82C90772800ECC702 /* Coordinator.swift in Sources */,
 			);
