@@ -13,5 +13,4 @@ final class ProfileController: BaseController {
         super.viewDidLoad()
         
     }
-
 }
