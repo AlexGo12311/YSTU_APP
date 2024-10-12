@@ -11,6 +11,8 @@ final class MarksController: BaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Marks"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.Montserrat.Bold.size(of: 28)]
     }
 }
