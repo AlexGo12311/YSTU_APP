@@ -27,6 +27,26 @@ final class ScheduleController: BaseController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navBar.scrollToCurrentWeek()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        navBar.layer.cornerRadius = 24
+        navBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        setShadow(navBar)
+        
+        NSLayoutConstraint.activate([
+            navBar.topAnchor.constraint(equalTo: view.topAnchor),
+            navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navBar.heightAnchor.constraint(equalToConstant: 134 + view.safeAreaInsets.top)
+        ])
+    }
+    
     private func getSchedule() {
         APICaller.shared.getSchedule { results in
             switch results {
@@ -46,17 +66,6 @@ final class ScheduleController: BaseController {
     
     override func layoutViews() {
         super.layoutViews()
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        navBar.layer.cornerRadius = 24
-        navBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        setShadow(navBar)
-        
-        NSLayoutConstraint.activate([
-            navBar.topAnchor.constraint(equalTo: view.topAnchor),
-            navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            navBar.heightAnchor.constraint(equalToConstant: 193)
-        ])
         
         scheduleFeedTable.translatesAutoresizingMaskIntoConstraints = false
         scheduleFeedTable.contentInsetAdjustmentBehavior = .never
@@ -74,13 +83,6 @@ final class ScheduleController: BaseController {
         scheduleFeedTable.delegate = self
         scheduleFeedTable.dataSource = self
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navBar.scrollToCurrentWeek()
-    }
-    
-
 }
 
 extension ScheduleController: UITableViewDelegate, UITableViewDataSource {

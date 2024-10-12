@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ScheduleNavBar: BaseView {
+final class ScheduleNavBar: UIView {
     func addChooseGroupButtonAction(_ action: Selector, with: Any?) {
         chooseGroupButton.addTarget(with, action: action, for: .touchUpInside)
     }
@@ -37,6 +37,17 @@ final class ScheduleNavBar: BaseView {
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
+    
+    init() {
+        super.init(frame: .zero)
+        setupLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     
     func scrollToCurrentWeek() {
         if let currentWeekIndex = getCurrentWeekIndex() {
@@ -105,20 +116,23 @@ final class ScheduleNavBar: BaseView {
 }
 
 extension ScheduleNavBar {
-    override func addViews() {
-        super.addViews()
+    func setupLayout() {
+        addViews()
+        configure()
+    }
+    
+    func addViews() {
         addSubview(chooseGroupButton)
         addSubview(currentDateLabel)
         addSubview(todayLabel)
         addSubview(weekView)
     }
     
-    override func layoutViews() {
-        super.layoutViews()
-        
+    override func layoutSubviews() {
+        super.layoutSubviews()
         // Group choose button
         NSLayoutConstraint.activate([
-            chooseGroupButton.topAnchor.constraint(equalTo: topAnchor, constant: 65),
+            chooseGroupButton.topAnchor.constraint(equalTo: topAnchor, constant: 6 + safeAreaInsets.top),
             chooseGroupButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             chooseGroupButton.heightAnchor.constraint(equalToConstant: 30),
             chooseGroupButton.widthAnchor.constraint(equalToConstant: 96)
@@ -127,7 +141,7 @@ extension ScheduleNavBar {
         // CurrentDate label
         NSLayoutConstraint.activate([
             currentDateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            currentDateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 60)
+            currentDateLabel.topAnchor.constraint(equalTo: topAnchor, constant: 1 + safeAreaInsets.top)
         ])
         
         // Today Label
@@ -143,15 +157,14 @@ extension ScheduleNavBar {
             weekView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             weekView.heightAnchor.constraint(equalToConstant: 72)
         ])
-    
     }
     
-    override func configure() {
-        super.configure()
+    
+    func configure() {
         weekView.register(WeekCell.self, forCellWithReuseIdentifier: WeekCell.identifier)
         weekView.dataSource = self
         weekView.delegate = self
-
+        
         backgroundColor = AccentColors.interfaceColor
         setShadow(chooseGroupButton)
         chooseGroupButton.translatesAutoresizingMaskIntoConstraints = false
