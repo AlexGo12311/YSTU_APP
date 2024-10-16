@@ -36,4 +36,5 @@ struct AccentColors {
     static let blackColor = UIColor(hex: "#080808")
     static let blueColor = UIColor(hex: "#194484")
     static let shadowColor = UIColor(hex: "#18396B")
+    static let testColor = UIColor(hex: "#EDEFFA")
 }
