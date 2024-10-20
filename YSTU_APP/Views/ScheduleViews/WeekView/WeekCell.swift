@@ -7,22 +7,39 @@
 
 import UIKit
 
+protocol WeekCellDelegate: AnyObject {
+    func dayButtonDidTapped(_ sender: DayButton)
+}
+
 class WeekCell: UICollectionViewCell {
     static let identifier = "WeekCell"
+    weak var delegate: WeekCellDelegate?
+    private var weekIndex: Int?
     
     @objc func buttonTapped(_ sender: DayButton) {
         print("\(sender.tag) - button tag")
+        let tmpConstraint = widthConstraint.constant
         widthConstraint.constant = stackView.arrangedSubviews[sender.tag].frame.width
         leadingConstraint.constant = stackView.arrangedSubviews[sender.tag].frame.origin.x
         
-        UIView.animate(withDuration: 0.2) {
-            self.stackView.layoutIfNeeded()
+        if tmpConstraint != 0 {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.contentView.layoutIfNeeded()
+                self.buttonArray.forEach { button in
+                    let isActive = (button == sender)
+                    UIView.transition(with: button, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                        button.isActive = isActive
+                    })
+                }
+            }, completion: { _ in
+                // После завершения анимации вызываем делегат
+                self.delegate?.dayButtonDidTapped(sender)
+            })
+        } else {
+            self.contentView.layoutIfNeeded()
             self.buttonArray.forEach { button in
-                let isActive = (button == sender)
-                
-                UIView.transition(with: button, duration: 0.3, options: .transitionCrossDissolve, animations: { button.isActive = isActive } )
-                
-            }
+                button.isActive = (button == sender) }
+            delegate?.dayButtonDidTapped(sender)
         }
     }
     
@@ -51,17 +68,39 @@ class WeekCell: UICollectionViewCell {
 }
 
 extension WeekCell {
-    func configure(with dates: [Date]) {
+    func configure(with dates: [Date], selectedWeekIndex: Int?, selectedDayIndex: Int?, currentWeekIndex: Int) {
+        // Очищаем stackView и массив кнопок
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         buttonArray.removeAll()
+
+        // Добавляем новые кнопки
         dates.enumerated().forEach {
             let button = DayButton(date: $0.element)
+            button.isActive = (currentWeekIndex == selectedWeekIndex && $0.offset == selectedDayIndex)
             button.tag = $0.offset
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
             buttonArray.append(button)
             stackView.addArrangedSubview(button)
         }
+
+        // Обновляем положение и ширину selectedView после настройки всех кнопок
+        if let selectedDay = selectedDayIndex, currentWeekIndex == selectedWeekIndex {
+            self.weekIndex = currentWeekIndex
+            let selectedButton = buttonArray[selectedDay]
+            // Устанавливаем правильную ширину и положение selectedView
+            DispatchQueue.main.async {
+                self.widthConstraint.constant = selectedButton.frame.width
+                self.leadingConstraint.constant = selectedButton.frame.origin.x
+                self.contentView.layoutIfNeeded()
+            }
+        } else {
+            // Если нет активной кнопки, скрываем selectedView
+            widthConstraint.constant = 0
+            leadingConstraint.constant = 0
+        }
     }
+
+
 }
 
 private extension WeekCell {
@@ -83,7 +122,7 @@ private extension WeekCell {
     }
     
     func configureSelectedView() {
-        selectedView.backgroundColor = AccentColors.testColor
+        selectedView.backgroundColor = AccentColors.selectedViewColor
         selectedView.layer.cornerRadius = 16
         stackView.addSubview(selectedView)
         selectedView.translatesAutoresizingMaskIntoConstraints = false

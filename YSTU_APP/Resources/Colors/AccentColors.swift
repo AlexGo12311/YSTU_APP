@@ -27,6 +27,10 @@ struct AccentColors {
         (traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black)
     }
     
+    static let selectedViewColor = UIColor { traitCollection in
+        (traitCollection.userInterfaceStyle == .dark ? UIColor(hex: "#3C486B") : testColor) ?? UIColor()
+    }
+    
     static let buttonTextColor = UIColor { traitCollection in
         (traitCollection.userInterfaceStyle == .dark ? UIColor.black : UIColor.white)
     }

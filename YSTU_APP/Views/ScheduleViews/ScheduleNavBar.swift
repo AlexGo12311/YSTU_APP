@@ -14,7 +14,11 @@ final class ScheduleNavBar: UIView {
     
     
     private let currentDate = Date()
+    private var selectedWeekIndex: Int?
+    private var selectedDayIndex: Int?
 
+
+    // Начало года 1 января в данном случае
     private let baseDate: Date = {
         var calendar = Calendar.current
         
@@ -23,6 +27,8 @@ final class ScheduleNavBar: UIView {
         
         return startDateOfWeek
     }()
+    
+    private var weeks = [Week]()
     
     let weekView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -41,12 +47,16 @@ final class ScheduleNavBar: UIView {
     init() {
         super.init(frame: .zero)
         setupLayout()
+        for i in 0..<100 {
+            if let startDate = Calendar.current.date(byAdding: .weekOfYear, value: i, to: baseDate) {
+                weeks.append(Week(startDate: startDate))
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     func scrollToCurrentWeek() {
@@ -66,6 +76,7 @@ final class ScheduleNavBar: UIView {
     
     private func getCurrentWeekIndex() -> Int? {
         let calendar = Calendar.current
+        // разница начала и конца
         let components = calendar.dateComponents([.weekOfYear], from: baseDate, to: Date())
         guard let weekIndex = components.weekOfYear else { return nil }
         
@@ -173,17 +184,23 @@ extension ScheduleNavBar {
 
 extension ScheduleNavBar: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return weeks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekCell.identifier, for: indexPath) as? WeekCell else { return UICollectionViewCell() }
+        
+//        let week = weeks[indexPath.item]
+//        let dates = getDatesForWeek(startDate: week.startDate)
+        
         let offset = indexPath.item
         let newStartDate = Calendar.current.date(byAdding: .weekOfYear, value: offset, to: baseDate) ?? Date()
         
         let dates = getDatesForWeek(startDate: newStartDate)
-        cell.configure(with: dates)
-        return cell
+        
+        cell.configure(with: dates, selectedWeekIndex: selectedWeekIndex, selectedDayIndex: selectedDayIndex, currentWeekIndex: indexPath.item)
+            cell.delegate = self
+            return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -193,3 +210,20 @@ extension ScheduleNavBar: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 }
 
+extension ScheduleNavBar: WeekCellDelegate {
+    func dayButtonDidTapped(_ sender: DayButton) {
+        selectedWeekIndex = nil
+        selectedDayIndex = nil
+        
+        // Получаем текущий видимый индекс недели
+        guard let visibleIndexPath = weekView.indexPathsForVisibleItems.first else { return }
+        let currentWeekIndex = visibleIndexPath.item
+
+        // Устанавливаем глобальные выбранные индексы
+        selectedWeekIndex = currentWeekIndex
+        selectedDayIndex = sender.tag
+        
+        // Перезагружаем данные всех ячеек
+        weekView.reloadData()
+    }
+}
