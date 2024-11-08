@@ -14,15 +14,25 @@ protocol WeekCellDelegate: AnyObject {
 class WeekCell: UICollectionViewCell {
     static let identifier = "WeekCell"
     weak var delegate: WeekCellDelegate?
-    private var weekIndex: Int?
+    
+    let isTodayIdentifier: UILabel = {
+        let label = UILabel()
+        label.text = "."
+        label.textAlignment = .center
+        label.font = .Montserrat.Bold.size(of: 21)
+        label.textColor = AccentColors.selectedColor
+        return label
+    }()
+    
     
     @objc func buttonTapped(_ sender: DayButton) {
         print("\(sender.tag) - button tag")
-        let tmpConstraint = widthConstraint.constant
+//        let tmpConstraint = widthConstraint.constant
         widthConstraint.constant = stackView.arrangedSubviews[sender.tag].frame.width
         leadingConstraint.constant = stackView.arrangedSubviews[sender.tag].frame.origin.x
+        trailingConstraint.constant = -(self.stackView.frame.width - sender.frame.maxX)
         
-        if tmpConstraint != 0 {
+//        if tmpConstraint != 0 {
             UIView.animate(withDuration: 0.2, animations: {
                 self.contentView.layoutIfNeeded()
                 self.buttonArray.forEach { button in
@@ -35,12 +45,12 @@ class WeekCell: UICollectionViewCell {
                 // После завершения анимации вызываем делегат
                 self.delegate?.dayButtonDidTapped(sender)
             })
-        } else {
-            self.contentView.layoutIfNeeded()
-            self.buttonArray.forEach { button in
-                button.isActive = (button == sender) }
-            delegate?.dayButtonDidTapped(sender)
-        }
+//        } else {
+//            self.contentView.layoutIfNeeded()
+//            self.buttonArray.forEach { button in
+//                button.isActive = (button == sender) }
+//            delegate?.dayButtonDidTapped(sender)
+//        }
     }
     
     let stackView: UIStackView = {
@@ -53,8 +63,12 @@ class WeekCell: UICollectionViewCell {
 
     private var buttonArray = [DayButton]()
     private let selectedView = UIView()
-    private var leadingConstraint = NSLayoutConstraint()
+    var leadingConstraint = NSLayoutConstraint()
+    var trailingConstraint = NSLayoutConstraint()
     private var widthConstraint = NSLayoutConstraint()
+    
+    private var leadingForFlag = NSLayoutConstraint()
+    private var widthForFlag = NSLayoutConstraint()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,7 +82,7 @@ class WeekCell: UICollectionViewCell {
 }
 
 extension WeekCell {
-    func configure(with dates: [Date], selectedWeekIndex: Int?, selectedDayIndex: Int?, currentWeekIndex: Int) {
+    func configure(with dates: [Date], selectedWeekIndex: Int?, selectedDayIndex: Int?, currentWeekIndex: Int, todayIndex: Int, todayWeekIndex: Int) {
         // Очищаем stackView и массив кнопок
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         buttonArray.removeAll()
@@ -82,21 +96,35 @@ extension WeekCell {
             buttonArray.append(button)
             stackView.addArrangedSubview(button)
         }
+        
+        if currentWeekIndex == todayWeekIndex {
+            let todayButton = buttonArray[todayIndex]
+            
+            DispatchQueue.main.async {
+                self.contentView.layoutIfNeeded()
+                self.widthForFlag.constant = todayButton.frame.width
+                self.leadingForFlag.constant = todayButton.frame.origin.x
+            }
+        } else {
+            self.widthForFlag.constant = 0
+            self.leadingForFlag.constant = 0
+        }
 
         // Обновляем положение и ширину selectedView после настройки всех кнопок
         if let selectedDay = selectedDayIndex, currentWeekIndex == selectedWeekIndex {
-            self.weekIndex = currentWeekIndex
             let selectedButton = buttonArray[selectedDay]
             // Устанавливаем правильную ширину и положение selectedView
             DispatchQueue.main.async {
+                self.contentView.layoutIfNeeded()
                 self.widthConstraint.constant = selectedButton.frame.width
                 self.leadingConstraint.constant = selectedButton.frame.origin.x
-                self.contentView.layoutIfNeeded()
+                self.trailingConstraint.constant = -(self.stackView.frame.width - selectedButton.frame.maxX)
             }
         } else {
             // Если нет активной кнопки, скрываем selectedView
             widthConstraint.constant = 0
             leadingConstraint.constant = 0
+            trailingConstraint.constant = 0
         }
     }
 
@@ -107,6 +135,7 @@ private extension WeekCell {
     func setupLayout() {
         setupStack()
         configureSelectedView()
+        configureIsTodayLabel()
     }
     
     func setupStack() {
@@ -121,6 +150,21 @@ private extension WeekCell {
         ])
     }
     
+    func configureIsTodayLabel() {
+        stackView.addSubview(isTodayIdentifier)
+        isTodayIdentifier.translatesAutoresizingMaskIntoConstraints = false
+        
+        leadingForFlag = isTodayIdentifier.leadingAnchor.constraint(equalTo: stackView.leadingAnchor)
+        widthForFlag = isTodayIdentifier.widthAnchor.constraint(equalToConstant: 0)
+        
+        leadingForFlag.isActive = true
+        widthForFlag.isActive = true
+        
+        NSLayoutConstraint.activate([
+            isTodayIdentifier.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
+        ])
+    }
+    
     func configureSelectedView() {
         selectedView.backgroundColor = AccentColors.selectedViewColor
         selectedView.layer.cornerRadius = 16
@@ -128,9 +172,12 @@ private extension WeekCell {
         selectedView.translatesAutoresizingMaskIntoConstraints = false
         
         leadingConstraint = selectedView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor)
+        trailingConstraint = selectedView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         widthConstraint = selectedView.widthAnchor.constraint(equalToConstant: 0)
+        
         leadingConstraint.isActive = true
         widthConstraint.isActive = true
+        
         
         NSLayoutConstraint.activate([
             selectedView.topAnchor.constraint(equalTo: topAnchor),
@@ -138,3 +185,5 @@ private extension WeekCell {
         ])
     }
 }
+
+

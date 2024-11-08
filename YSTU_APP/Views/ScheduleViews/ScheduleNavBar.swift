@@ -16,6 +16,8 @@ final class ScheduleNavBar: UIView {
     private let currentDate = Date()
     private var selectedWeekIndex: Int?
     private var selectedDayIndex: Int?
+    
+    private var lastContentOffset: CGFloat = 0
 
 
     // Начало года 1 января в данном случае
@@ -74,6 +76,23 @@ final class ScheduleNavBar: UIView {
         }
     }
     
+    func selectToday() {
+        guard let currentWeekIndex = getCurrentWeekIndex(),
+              let currentDayIndex = getCurrentDayIndexInWeek(currentWeekIndex) else {
+            return
+        }
+        
+        selectedWeekIndex = currentWeekIndex
+        selectedDayIndex = currentDayIndex
+        
+        // Обновите текущую ячейку после прокрутки
+        DispatchQueue.main.async {
+            self.weekView.reloadData()
+            self.todayLabel.text = "Today"
+        }
+    }
+    
+    
     private func getCurrentWeekIndex() -> Int? {
         let calendar = Calendar.current
         // разница начала и конца
@@ -82,6 +101,19 @@ final class ScheduleNavBar: UIView {
         
         return weekIndex
     }
+    
+    private func getCurrentDayIndexInWeek(_ weekIndex: Int) -> Int? {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        
+        guard let startDateOfWeek = calendar.date(byAdding: .weekOfYear, value: weekIndex, to: baseDate) else {
+            return nil
+        }
+        
+        let dayIndex = calendar.dateComponents([.day], from: startDateOfWeek, to: currentDate).day
+        return (dayIndex ?? 0) >= 0 && (dayIndex ?? 0) < 7 ? dayIndex : nil
+    }
+
     
     private func getDatesForWeek(startDate: Date) -> [Date] {
         var dates = [Date]()
@@ -198,7 +230,10 @@ extension ScheduleNavBar: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         let dates = getDatesForWeek(startDate: newStartDate)
         
-        cell.configure(with: dates, selectedWeekIndex: selectedWeekIndex, selectedDayIndex: selectedDayIndex, currentWeekIndex: indexPath.item)
+        let todayWeekIndex = getCurrentWeekIndex()
+        let todayIndex = getCurrentDayIndexInWeek(todayWeekIndex ?? 0) ?? 0
+        
+        cell.configure(with: dates, selectedWeekIndex: selectedWeekIndex, selectedDayIndex: selectedDayIndex, currentWeekIndex: indexPath.item, todayIndex: todayIndex, todayWeekIndex: todayWeekIndex ?? 0)
             cell.delegate = self
             return cell
     }
@@ -208,6 +243,44 @@ extension ScheduleNavBar: UICollectionViewDelegate, UICollectionViewDataSource, 
         let cellHeight = collectionView.frame.height
         return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard let visibleIndexPath = weekView.indexPathsForVisibleItems.first else { return }
+        let currentWeekIndex = visibleIndexPath.item
+
+        // Проверка на изменение направления: вправо или влево
+        if (selectedWeekIndex ?? 0) < currentWeekIndex {
+            didScrollRight(currentWeekIndex: currentWeekIndex)
+        }
+        
+        else if (selectedWeekIndex ?? 0) > currentWeekIndex {
+            // Скролл влево
+            didScrollLeft(currentWeekIndex: currentWeekIndex)
+        }
+
+    }
+
+
+    func didScrollRight(currentWeekIndex: Int) {
+        guard let cell = weekView.cellForItem(at: IndexPath(item: currentWeekIndex, section: 0)) as? WeekCell else { return }
+        print("left")
+        
+        // Добавляем анимацию для скролла вправо
+        cell.leadingConstraint.isActive = true
+        cell.trailingConstraint.isActive = false
+    }
+
+    func didScrollLeft(currentWeekIndex: Int) {
+        guard let cell = weekView.cellForItem(at: IndexPath(item: currentWeekIndex, section: 0)) as? WeekCell else { return }
+        print("right")
+        
+        // Добавляем анимацию для скролла влево
+        cell.leadingConstraint.isActive = false
+        cell.trailingConstraint.isActive = true
+    }
+
+
 }
 
 extension ScheduleNavBar: WeekCellDelegate {
@@ -218,12 +291,49 @@ extension ScheduleNavBar: WeekCellDelegate {
         // Получаем текущий видимый индекс недели
         guard let visibleIndexPath = weekView.indexPathsForVisibleItems.first else { return }
         let currentWeekIndex = visibleIndexPath.item
-
+        
         // Устанавливаем глобальные выбранные индексы
         selectedWeekIndex = currentWeekIndex
         selectedDayIndex = sender.tag
         
         // Перезагружаем данные всех ячеек
         weekView.reloadData()
+        
+        guard let currentWeekIndex = getCurrentWeekIndex(),
+              let currentDayIndex = getCurrentDayIndexInWeek(currentWeekIndex) else {
+            return
+        }
+        
+        let isSameWeek = currentWeekIndex == selectedWeekIndex
+        let isPreviousWeek = (selectedWeekIndex ?? 0) < currentWeekIndex
+        let isNextWeek = (selectedWeekIndex ?? 0) > currentWeekIndex
+        
+        let isNextDay = (selectedDayIndex ?? 0) - currentDayIndex == 1
+        let isPreviousDay = currentDayIndex - (selectedDayIndex ?? 0) == 1
+        let isSameDay = currentDayIndex == (selectedDayIndex ?? 0)
+        let isNotAdjacent = !(isNextDay || isPreviousDay)
+        
+
+        if isSameWeek {
+            if isNextDay {
+                self.todayLabel.text = "Tomorrow"
+            } else if isPreviousDay {
+                self.todayLabel.text = "Yesterday"
+            } else if isSameDay {
+                self.todayLabel.text = "Today"
+            } else if isNotAdjacent {
+                self.todayLabel.text = "On week"
+            }
+        }
+        
+        if isPreviousWeek {
+            self.todayLabel.text = "Last week"
+        }
+        
+        if isNextWeek {
+            self.todayLabel.text = "Next week"
+        }
+        
+        
     }
 }

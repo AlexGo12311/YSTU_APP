@@ -30,6 +30,7 @@ final class ScheduleController: BaseController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navBar.scrollToCurrentWeek()
+        navBar.selectToday()
     }
     
     override func viewDidLayoutSubviews() {
