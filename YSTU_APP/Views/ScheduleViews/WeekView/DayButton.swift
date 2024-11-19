@@ -103,9 +103,9 @@ private extension DayButton {
     }
 }
 
-#Preview("DayButton", traits: .fixedLayout(width: 27, height: 40)) {
-    let buttom = DayButton(date: Date())
-    buttom.isActive = true
-    
-    return buttom
-}
+//#Preview("DayButton", traits: .fixedLayout(width: 27, height: 40)) {
+//    let buttom = DayButton(date: Date())
+//    buttom.isActive = true
+//    
+//    return buttom
+//}

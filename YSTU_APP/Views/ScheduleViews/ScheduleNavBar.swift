@@ -89,6 +89,7 @@ final class ScheduleNavBar: UIView {
         DispatchQueue.main.async {
             self.weekView.reloadData()
             self.todayLabel.text = "Today"
+            self.currentDateLabel.text = self.setTodayDateToLabel()
         }
     }
     
@@ -139,19 +140,19 @@ final class ScheduleNavBar: UIView {
         return label
     }()
     
-    let currentDateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .Montserrat.Light.size(of: 14)
-        label.textColor = AccentColors.ordinaryTextColor
-        
+    func setTodayDateToLabel() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"  // Формат даты: Apr 08, 2022
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 
         let date = Date()  // Текущая дата
-        let formattedDate = dateFormatter.string(from: date)
-        
-        label.text = String(formattedDate)
+        return String(dateFormatter.string(from: date))
+    }
+    
+    let currentDateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .Montserrat.Light.size(of: 14)
+        label.textColor = AccentColors.ordinaryTextColor
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -298,6 +299,14 @@ extension ScheduleNavBar: WeekCellDelegate {
         
         // Перезагружаем данные всех ячеек
         weekView.reloadData()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"  // Формат даты: Apr 08, 2022
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let dates = getDatesForWeek(startDate: weeks[currentWeekIndex].startDate)
+        
+        let selectedDay = dates[selectedDayIndex ?? 0]
+        currentDateLabel.text = dateFormatter.string(from: selectedDay)
         
         guard let currentWeekIndex = getCurrentWeekIndex(),
               let currentDayIndex = getCurrentDayIndexInWeek(currentWeekIndex) else {
