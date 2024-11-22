@@ -9,6 +9,10 @@ import UIKit
 
 final class ChoosyButton: UIButton {
     
+    public func changeGroupName(_ name: String) {
+        group.text = name
+    }
+    
     let group: UILabel = {
         let label = UILabel()
         label.font = .Montserrat.Regular.size(of: 14)
@@ -70,6 +74,7 @@ final class ChoosyButton: UIButton {
     func configure() {
         backgroundColor = AccentColors.selectedColor
         self.layer.cornerRadius = 16
+        self.showsMenuAsPrimaryAction = true
     }
 }
 

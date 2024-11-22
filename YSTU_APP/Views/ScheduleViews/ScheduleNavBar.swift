@@ -49,6 +49,7 @@ final class ScheduleNavBar: UIView {
     init() {
         super.init(frame: .zero)
         setupLayout()
+        configureContextMenu()
         for i in 0..<100 {
             if let startDate = Calendar.current.date(byAdding: .weekOfYear, value: i, to: baseDate) {
                 weeks.append(Week(startDate: startDate))
@@ -130,6 +131,27 @@ final class ScheduleNavBar: UIView {
     }
     
     let chooseGroupButton = ChoosyButton(groupName: "ЦПИ-11")
+    
+    @objc func configureContextMenu() {
+        let section1 = ["ЦПИ-11",
+                        "ЦТС-10",
+                        "ЦИС-14"].map {item in
+            UIAction(title: item) { [self] _ in chooseGroupButton.changeGroupName(item); layoutIfNeeded()}
+        }
+        
+        let section2 = ["МТ-15",
+                        "МСДМ-1",].map { item in
+            UIAction(title: item) { [self] _ in chooseGroupButton.changeGroupName(item); layoutIfNeeded()}
+        }
+        
+        let menu1 = UIMenu(title: "Институт цифровых систем", children: section1)
+        let menu2 = UIMenu(title: "Институт машиностроения", children: section2)
+        
+        let mainMenu = UIMenu(children: [menu1, menu2])
+        
+        chooseGroupButton.menu = mainMenu
+        chooseGroupButton.showsMenuAsPrimaryAction = true
+    }
     
     let todayLabel: UILabel = {
         let label = UILabel()
