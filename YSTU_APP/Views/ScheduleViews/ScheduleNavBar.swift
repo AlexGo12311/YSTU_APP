@@ -71,7 +71,7 @@ final class ScheduleNavBar: UIView {
                 
                 if let attributes = layoutAttributes {
                     let targetOffset = CGPoint(x: attributes.frame.origin.x, y: 0)
-                    self.weekView.setContentOffset(targetOffset, animated: false)
+                    self.weekView.setContentOffset(targetOffset, animated: true)
                 }
             }
         }
