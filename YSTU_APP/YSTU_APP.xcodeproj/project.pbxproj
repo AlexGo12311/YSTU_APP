@@ -51,6 +51,7 @@
 		4D6D43A22CA9A5A800DBFF17 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D43A12CA9A5A800DBFF17 /* BaseController.swift */; };
 		4D6D43AB2CA9A6EF00DBFF17 /* ScheduleNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D43AA2CA9A6EF00DBFF17 /* ScheduleNavBar.swift */; };
 		4D6D43AD2CA9AD0100DBFF17 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D43AC2CA9AD0100DBFF17 /* Shadow.swift */; };
+		4D91CDBA2D02E8ED0089AC70 /* GroupsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91CDB92D02E8DB0089AC70 /* GroupsList.swift */; };
 		4DAF7EE42CB948970016F142 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE32CB948970016F142 /* WeekCell.swift */; };
 		4DAF7EE62CB95A5E0016F142 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE52CB95A5E0016F142 /* DayButton.swift */; };
 		4DAF7EE82CB96A1F0016F142 /* WeekModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */; };
@@ -103,6 +104,7 @@
 		4D6D43A12CA9A5A800DBFF17 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		4D6D43AA2CA9A6EF00DBFF17 /* ScheduleNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNavBar.swift; sourceTree = "<group>"; };
 		4D6D43AC2CA9AD0100DBFF17 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
+		4D91CDB92D02E8DB0089AC70 /* GroupsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsList.swift; sourceTree = "<group>"; };
 		4DAF7EE32CB948970016F142 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		4DAF7EE52CB95A5E0016F142 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekModel.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		4D0105292CA32DFB00ECC702 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4D91CDB92D02E8DB0089AC70 /* GroupsList.swift */,
 				4D01052A2CA32E1B00ECC702 /* Lesson.swift */,
 				4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */,
 			);
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D6D43A22CA9A5A800DBFF17 /* BaseController.swift in Sources */,
+				4D91CDBA2D02E8ED0089AC70 /* GroupsList.swift in Sources */,
 				4D0104E32C8F6F2E00ECC702 /* UIColor+Ext.swift in Sources */,
 				4D6D43AB2CA9A6EF00DBFF17 /* ScheduleNavBar.swift in Sources */,
 				4D0104E12C8F5ED400ECC702 /* UIFont+Ext.swift in Sources */,

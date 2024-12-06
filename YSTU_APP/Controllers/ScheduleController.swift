@@ -21,6 +21,7 @@ final class ScheduleController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        getSchedule()
+//        getGruopList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +51,17 @@ final class ScheduleController: BaseController {
     
     private func getSchedule() {
         APICaller.shared.getSchedule { results in
+            switch results {
+            case .success(let items):
+                print(items)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getGruopList() {
+        APICaller.shared.getGroupsList { results in
             switch results {
             case .success(let items):
                 print(items)

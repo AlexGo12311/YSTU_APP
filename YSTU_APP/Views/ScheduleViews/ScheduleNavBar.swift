@@ -10,7 +10,7 @@ import UIKit
 final class ScheduleNavBar: UIView {
     func addChooseGroupButtonAction(_ action: Selector, with: Any?) {
         chooseGroupButton.addTarget(with, action: action, for: .touchUpInside)
-    }
+    } 
     
     
     private let currentDate = Date()
@@ -49,7 +49,7 @@ final class ScheduleNavBar: UIView {
     init() {
         super.init(frame: .zero)
         setupLayout()
-        configureContextMenu()
+        fetchAndConfigureContextMenu()
         for i in 0..<100 {
             if let startDate = Calendar.current.date(byAdding: .weekOfYear, value: i, to: baseDate) {
                 weeks.append(Week(startDate: startDate))
@@ -132,26 +132,51 @@ final class ScheduleNavBar: UIView {
     
     let chooseGroupButton = ChoosyButton(groupName: "ЦПИ-11")
     
-    @objc func configureContextMenu() {
-        let section1 = ["ЦПИ-11",
-                        "ЦТС-10",
-                        "ЦИС-14"].map {item in
-            UIAction(title: item) { [self] _ in chooseGroupButton.changeGroupName(item); layoutIfNeeded()}
+    func fetchAndConfigureContextMenu() {
+        APICaller.shared.getGroupsList { [weak self] result in
+            switch result {
+            case .success(let sections):
+                DispatchQueue.main.async {
+                    self?.updateMenu(sections: sections)
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
         }
-        
-        let section2 = ["МТ-15",
-                        "МСДМ-1",].map { item in
-            UIAction(title: item) { [self] _ in chooseGroupButton.changeGroupName(item); layoutIfNeeded()}
-        }
-        
-        let menu1 = UIMenu(title: "Институт цифровых систем", children: section1)
-        let menu2 = UIMenu(title: "Институт машиностроения", children: section2)
-        
-        let mainMenu = UIMenu(children: [menu1, menu2])
-        
-        chooseGroupButton.menu = mainMenu
-        chooseGroupButton.showsMenuAsPrimaryAction = true
     }
+
+    func updateMenu(sections: [GroupSection]) {
+        configureContextMenu(with: sections)
+    }
+
+    
+    func configureContextMenu(with data: [GroupSection]) {
+        // Показать временное меню, пока данные не загружены
+        chooseGroupButton.menu = UIMenu(title: "Loading...", children: [])
+        
+        // Асинхронное создание меню
+        DispatchQueue.global().async {
+            let menus = data.map { section in
+                let actions = section.groups.map { group in
+                    UIAction(title: group) { [weak self] _ in
+                        self?.chooseGroupButton.changeGroupName(group)
+                        self?.layoutIfNeeded()
+                    }
+                }
+                return UIMenu(title: section.title, children: actions)
+            }
+            
+            
+            let mainMenu = UIMenu(children: menus)
+            
+            // Обновление меню на основном потоке
+            DispatchQueue.main.async { [weak self] in
+                self?.chooseGroupButton.menu = mainMenu
+                self?.chooseGroupButton.showsMenuAsPrimaryAction = true
+            }
+        }
+    }
+
     
     let todayLabel: UILabel = {
         let label = UILabel()
