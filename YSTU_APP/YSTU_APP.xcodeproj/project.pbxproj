@@ -46,6 +46,9 @@
 		4D0104F62C90973900ECC702 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0104F52C90973900ECC702 /* ProfileCoordinator.swift */; };
 		4D0105282CA1DD5700ECC702 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0105272CA1DD5700ECC702 /* APICaller.swift */; };
 		4D01052B2CA32E1B00ECC702 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01052A2CA32E1B00ECC702 /* Lesson.swift */; };
+		4D198D2B2D2BCF6000F122E7 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D198D2A2D2BCF5500F122E7 /* CourseView.swift */; };
+		4D198D2D2D2BCF6B00F122E7 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D198D2C2D2BCF6300F122E7 /* TimeView.swift */; };
+		4D373AC72D0AD3F0007DE1D6 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D373AC62D0AD3F0007DE1D6 /* ScheduleTableViewCell.swift */; };
 		4D40CB5D2CA71EBC00303D01 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40CB5C2CA71EBC00303D01 /* String+Ext.swift */; };
 		4D5C56312CB3047600E67052 /* ChoosyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C56302CB3047600E67052 /* ChoosyButton.swift */; };
 		4D6D43A22CA9A5A800DBFF17 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D43A12CA9A5A800DBFF17 /* BaseController.swift */; };
@@ -55,6 +58,7 @@
 		4DAF7EE42CB948970016F142 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE32CB948970016F142 /* WeekCell.swift */; };
 		4DAF7EE62CB95A5E0016F142 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE52CB95A5E0016F142 /* DayButton.swift */; };
 		4DAF7EE82CB96A1F0016F142 /* WeekModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */; };
+		4DBBC2892D2998FC005DB972 /* ScheduleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBBC2882D2998EC005DB972 /* ScheduleHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +103,9 @@
 		4D0104F52C90973900ECC702 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		4D0105272CA1DD5700ECC702 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		4D01052A2CA32E1B00ECC702 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		4D198D2A2D2BCF5500F122E7 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
+		4D198D2C2D2BCF6300F122E7 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		4D373AC62D0AD3F0007DE1D6 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		4D40CB5C2CA71EBC00303D01 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		4D5C56302CB3047600E67052 /* ChoosyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosyButton.swift; sourceTree = "<group>"; };
 		4D6D43A12CA9A5A800DBFF17 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 		4DAF7EE32CB948970016F142 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
 		4DAF7EE52CB95A5E0016F142 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
 		4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekModel.swift; sourceTree = "<group>"; };
+		4DBBC2882D2998EC005DB972 /* ScheduleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,9 +289,13 @@
 		4DF52E312CB597AF00237CF5 /* ScheduleViews */ = {
 			isa = PBXGroup;
 			children = (
+				4D198D2C2D2BCF6300F122E7 /* TimeView.swift */,
+				4D198D2A2D2BCF5500F122E7 /* CourseView.swift */,
+				4DBBC2882D2998EC005DB972 /* ScheduleHeader.swift */,
 				4DF52E322CB597C600237CF5 /* WeekView */,
 				4D6D43AA2CA9A6EF00DBFF17 /* ScheduleNavBar.swift */,
 				4D5C56302CB3047600E67052 /* ChoosyButton.swift */,
+				4D373AC62D0AD3F0007DE1D6 /* ScheduleTableViewCell.swift */,
 			);
 			path = ScheduleViews;
 			sourceTree = "<group>";
@@ -388,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D6D43A22CA9A5A800DBFF17 /* BaseController.swift in Sources */,
+				4DBBC2892D2998FC005DB972 /* ScheduleHeader.swift in Sources */,
 				4D91CDBA2D02E8ED0089AC70 /* GroupsList.swift in Sources */,
 				4D0104E32C8F6F2E00ECC702 /* UIColor+Ext.swift in Sources */,
 				4D6D43AB2CA9A6EF00DBFF17 /* ScheduleNavBar.swift in Sources */,
@@ -403,16 +416,19 @@
 				4D0104F62C90973900ECC702 /* ProfileCoordinator.swift in Sources */,
 				4D40CB5D2CA71EBC00303D01 /* String+Ext.swift in Sources */,
 				4D01052B2CA32E1B00ECC702 /* Lesson.swift in Sources */,
+				4D198D2D2D2BCF6B00F122E7 /* TimeView.swift in Sources */,
 				4D01046C2C8F5A2B00ECC702 /* AppDelegate.swift in Sources */,
 				4D0104F02C9096DF00ECC702 /* MarksController.swift in Sources */,
 				4DAF7EE82CB96A1F0016F142 /* WeekModel.swift in Sources */,
 				4D5C56312CB3047600E67052 /* ChoosyButton.swift in Sources */,
 				4D0104EE2C90948000ECC702 /* ScheduleController.swift in Sources */,
 				4D01046E2C8F5A2B00ECC702 /* SceneDelegate.swift in Sources */,
+				4D198D2B2D2BCF6000F122E7 /* CourseView.swift in Sources */,
 				4D0104F42C90972A00ECC702 /* MarksCoordinator.swift in Sources */,
 				4D0105282CA1DD5700ECC702 /* APICaller.swift in Sources */,
 				4D0104EC2C9082AE00ECC702 /* ScheduleCoordinator.swift in Sources */,
 				4D0104E82C90772800ECC702 /* Coordinator.swift in Sources */,
+				4D373AC72D0AD3F0007DE1D6 /* ScheduleTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

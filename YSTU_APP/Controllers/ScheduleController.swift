@@ -13,7 +13,7 @@ final class ScheduleController: BaseController {
     
     let scheduleFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(ScheduleTableViewCell.self, forCellReuseIdentifier: ScheduleTableViewCell.identifier)
         table.backgroundColor = AccentColors.bgColor
         return table
     }()
@@ -71,6 +71,11 @@ final class ScheduleController: BaseController {
         }
     }
     
+    private func addHeaderView() {
+        let header = ScheduleHeader(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
+        scheduleFeedTable.tableHeaderView = header
+    }
+    
     override func addViews() {
         super.addViews()
         view.addSubview(scheduleFeedTable)
@@ -79,7 +84,7 @@ final class ScheduleController: BaseController {
     
     override func layoutViews() {
         super.layoutViews()
-        
+        addHeaderView()
         scheduleFeedTable.translatesAutoresizingMaskIntoConstraints = false
         scheduleFeedTable.contentInsetAdjustmentBehavior = .never
          
@@ -96,18 +101,31 @@ final class ScheduleController: BaseController {
         scheduleFeedTable.delegate = self
         scheduleFeedTable.dataSource = self
     }
+    
+    
 }
 
 extension ScheduleController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Lorem ipsum dollar"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
+        cell.configureTimeView(start: "00:00", end: "23:00")
+        cell.configureCourseView(name: "Математика (ВМ)", type: "Экзамен", room: "Б-107", teacher: "Ройтенберг Владимир Шлеймович")
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 137
     }
     
 }
