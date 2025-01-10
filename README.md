@@ -1,5 +1,5 @@
 
-# Luminis <img src="https://github.com/user-attachments/assets/047fb66c-f6b2-4c74-8778-49eff2a3bc8f" alt="Luminis Logo" width="50" align="left"> 
+# Luminis <img src="https://github.com/user-attachments/assets/bfb5805f-b4e1-49e7-b1f0-18865f0fee03" alt="Luminis Logo" width="50" align="left"> 
 
 The **Luminis** is an iOS application designed specifically for students of YSTU (likely referring to a university). The app provides essential features for managing academic activities and information. Based on the provided information and screenshots, the application focuses on delivering convenience and functionality to students.
   
