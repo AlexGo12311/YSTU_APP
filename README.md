@@ -2,6 +2,12 @@
 # YSTU_APP
 
 The **YSTU_APP** is an iOS application designed specifically for students of YSTU (likely referring to a university). The app provides essential features for managing academic activities and information. Based on the provided information and screenshots, the application focuses on delivering convenience and functionality to students.
+  
+### Screenshots  
+Below are some screenshots demonstrating the app's features:  
+
+<img src="https://github.com/user-attachments/assets/16f238d7-b43f-4dc8-ad1f-2017b99e5e95" alt="Screenshot 1" width="400">
+<img src="https://github.com/user-attachments/assets/9fd46744-ec66-4672-9dec-2453610d04e0" alt="Screenshot 2" width="400">
 
 ## **Functions**
 
