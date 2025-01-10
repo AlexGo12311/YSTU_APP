@@ -1,5 +1,5 @@
  
-# YSTU_APP
+# Luminis
 
 The **YSTU_APP** is an iOS application designed specifically for students of YSTU (likely referring to a university). The app provides essential features for managing academic activities and information. Based on the provided information and screenshots, the application focuses on delivering convenience and functionality to students.
   
