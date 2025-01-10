@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4D01046C2C8F5A2B00ECC702 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01046B2C8F5A2B00ECC702 /* AppDelegate.swift */; };
 		4D01046E2C8F5A2B00ECC702 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01046D2C8F5A2B00ECC702 /* SceneDelegate.swift */; };
-		4D0104702C8F5A2B00ECC702 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01046F2C8F5A2B00ECC702 /* ViewController.swift */; };
 		4D0104752C8F5A2E00ECC702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D0104742C8F5A2E00ECC702 /* Assets.xcassets */; };
 		4D0104782C8F5A2E00ECC702 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4D0104772C8F5A2E00ECC702 /* Base */; };
 		4D0104802C8F5B1F00ECC702 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01047F2C8F5B1F00ECC702 /* TabBarController.swift */; };
@@ -48,13 +47,20 @@
 		4D0105282CA1DD5700ECC702 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0105272CA1DD5700ECC702 /* APICaller.swift */; };
 		4D01052B2CA32E1B00ECC702 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D01052A2CA32E1B00ECC702 /* Lesson.swift */; };
 		4D40CB5D2CA71EBC00303D01 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D40CB5C2CA71EBC00303D01 /* String+Ext.swift */; };
+		4D5C56312CB3047600E67052 /* ChoosyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C56302CB3047600E67052 /* ChoosyButton.swift */; };
+		4D6D43A22CA9A5A800DBFF17 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D43A12CA9A5A800DBFF17 /* BaseController.swift */; };
+		4D6D43AB2CA9A6EF00DBFF17 /* ScheduleNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D43AA2CA9A6EF00DBFF17 /* ScheduleNavBar.swift */; };
+		4D6D43AD2CA9AD0100DBFF17 /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6D43AC2CA9AD0100DBFF17 /* Shadow.swift */; };
+		4D91CDBA2D02E8ED0089AC70 /* GroupsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91CDB92D02E8DB0089AC70 /* GroupsList.swift */; };
+		4DAF7EE42CB948970016F142 /* WeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE32CB948970016F142 /* WeekCell.swift */; };
+		4DAF7EE62CB95A5E0016F142 /* DayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE52CB95A5E0016F142 /* DayButton.swift */; };
+		4DAF7EE82CB96A1F0016F142 /* WeekModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4D0104682C8F5A2B00ECC702 /* YSTU_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSTU_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D01046B2C8F5A2B00ECC702 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D01046D2C8F5A2B00ECC702 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4D01046F2C8F5A2B00ECC702 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4D0104742C8F5A2E00ECC702 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D0104772C8F5A2E00ECC702 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D0104792C8F5A2E00ECC702 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +100,14 @@
 		4D0105272CA1DD5700ECC702 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		4D01052A2CA32E1B00ECC702 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		4D40CB5C2CA71EBC00303D01 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		4D5C56302CB3047600E67052 /* ChoosyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosyButton.swift; sourceTree = "<group>"; };
+		4D6D43A12CA9A5A800DBFF17 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		4D6D43AA2CA9A6EF00DBFF17 /* ScheduleNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleNavBar.swift; sourceTree = "<group>"; };
+		4D6D43AC2CA9AD0100DBFF17 /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
+		4D91CDB92D02E8DB0089AC70 /* GroupsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsList.swift; sourceTree = "<group>"; };
+		4DAF7EE32CB948970016F142 /* WeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCell.swift; sourceTree = "<group>"; };
+		4DAF7EE52CB95A5E0016F142 /* DayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayButton.swift; sourceTree = "<group>"; };
+		4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +124,7 @@
 		4D01045F2C8F5A2B00ECC702 = {
 			isa = PBXGroup;
 			children = (
+				4D6D43A62CA9A65200DBFF17 /* Views */,
 				4D0105292CA32DFB00ECC702 /* Models */,
 				4D0105262CA1DD3400ECC702 /* Managers */,
 				4D0104862C8F5B8C00ECC702 /* Resources */,
@@ -131,11 +146,10 @@
 		4D01046A2C8F5A2B00ECC702 /* YSTU_APP */ = {
 			isa = PBXGroup;
 			children = (
-				4D01047F2C8F5B1F00ECC702 /* TabBarController.swift */,
+				4D6D43A12CA9A5A800DBFF17 /* BaseController.swift */,
 				4D0104822C8F5B5E00ECC702 /* SceneFactory.swift */,
 				4D01046B2C8F5A2B00ECC702 /* AppDelegate.swift */,
 				4D01046D2C8F5A2B00ECC702 /* SceneDelegate.swift */,
-				4D01046F2C8F5A2B00ECC702 /* ViewController.swift */,
 				4D0104742C8F5A2E00ECC702 /* Assets.xcassets */,
 				4D0104762C8F5A2E00ECC702 /* LaunchScreen.storyboard */,
 				4D0104792C8F5A2E00ECC702 /* Info.plist */,
@@ -158,6 +172,7 @@
 		4D0104852C8F5B7C00ECC702 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D6D43A42CA9A62E00DBFF17 /* Core */,
 				4D0104ED2C90948000ECC702 /* ScheduleController.swift */,
 				4D0104EF2C9096DF00ECC702 /* MarksController.swift */,
 				4D0104F12C90970900ECC702 /* ProfileController.swift */,
@@ -224,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				4D0104E52C8F703B00ECC702 /* AccentColors.swift */,
+				4D6D43AC2CA9AD0100DBFF17 /* Shadow.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -239,9 +255,46 @@
 		4D0105292CA32DFB00ECC702 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4D91CDB92D02E8DB0089AC70 /* GroupsList.swift */,
 				4D01052A2CA32E1B00ECC702 /* Lesson.swift */,
+				4DAF7EE72CB96A1F0016F142 /* WeekModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4D6D43A42CA9A62E00DBFF17 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4D01047F2C8F5B1F00ECC702 /* TabBarController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4D6D43A62CA9A65200DBFF17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4DF52E312CB597AF00237CF5 /* ScheduleViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4DF52E312CB597AF00237CF5 /* ScheduleViews */ = {
+			isa = PBXGroup;
+			children = (
+				4DF52E322CB597C600237CF5 /* WeekView */,
+				4D6D43AA2CA9A6EF00DBFF17 /* ScheduleNavBar.swift */,
+				4D5C56302CB3047600E67052 /* ChoosyButton.swift */,
+			);
+			path = ScheduleViews;
+			sourceTree = "<group>";
+		};
+		4DF52E322CB597C600237CF5 /* WeekView */ = {
+			isa = PBXGroup;
+			children = (
+				4DAF7EE32CB948970016F142 /* WeekCell.swift */,
+				4DAF7EE52CB95A5E0016F142 /* DayButton.swift */,
+			);
+			path = WeekView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,19 +387,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D6D43A22CA9A5A800DBFF17 /* BaseController.swift in Sources */,
+				4D91CDBA2D02E8ED0089AC70 /* GroupsList.swift in Sources */,
 				4D0104E32C8F6F2E00ECC702 /* UIColor+Ext.swift in Sources */,
+				4D6D43AB2CA9A6EF00DBFF17 /* ScheduleNavBar.swift in Sources */,
 				4D0104E12C8F5ED400ECC702 /* UIFont+Ext.swift in Sources */,
 				4D0104EA2C907A8600ECC702 /* AppCoordinator.swift in Sources */,
-				4D0104702C8F5A2B00ECC702 /* ViewController.swift in Sources */,
 				4D0104832C8F5B5E00ECC702 /* SceneFactory.swift in Sources */,
 				4D0104802C8F5B1F00ECC702 /* TabBarController.swift in Sources */,
 				4D0104E62C8F703B00ECC702 /* AccentColors.swift in Sources */,
+				4D6D43AD2CA9AD0100DBFF17 /* Shadow.swift in Sources */,
 				4D0104F22C90970900ECC702 /* ProfileController.swift in Sources */,
+				4DAF7EE62CB95A5E0016F142 /* DayButton.swift in Sources */,
+				4DAF7EE42CB948970016F142 /* WeekCell.swift in Sources */,
 				4D0104F62C90973900ECC702 /* ProfileCoordinator.swift in Sources */,
 				4D40CB5D2CA71EBC00303D01 /* String+Ext.swift in Sources */,
 				4D01052B2CA32E1B00ECC702 /* Lesson.swift in Sources */,
 				4D01046C2C8F5A2B00ECC702 /* AppDelegate.swift in Sources */,
 				4D0104F02C9096DF00ECC702 /* MarksController.swift in Sources */,
+				4DAF7EE82CB96A1F0016F142 /* WeekModel.swift in Sources */,
+				4D5C56312CB3047600E67052 /* ChoosyButton.swift in Sources */,
 				4D0104EE2C90948000ECC702 /* ScheduleController.swift in Sources */,
 				4D01046E2C8F5A2B00ECC702 /* SceneDelegate.swift in Sources */,
 				4D0104F42C90972A00ECC702 /* MarksCoordinator.swift in Sources */,
@@ -501,8 +561,8 @@
 				INFOPLIST_FILE = YSTU_APP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,8 +588,8 @@
 				INFOPLIST_FILE = YSTU_APP/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

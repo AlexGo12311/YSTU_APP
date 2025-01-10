@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     private var isTabBarCustomized = false
     
@@ -20,12 +20,49 @@ final class TabBarController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = self
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !isTabBarCustomized {
             tabBar.setCustomStyle()
             isTabBarCustomized = true
         }
+    }
+    
+    private func animate(_ imageView: UIImageView) {
+        UIView.animate(withDuration: 0.1, animations: {
+            imageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.4)
+        }) { _ in
+            UIView.animate(withDuration: 0.2,
+                           delay: 0.0,
+                           usingSpringWithDamping: 0.3,
+                           initialSpringVelocity: 7.0,
+                           options: .curveEaseInOut,
+                           animations: {
+                imageView.transform = CGAffineTransform.identity
+            })
+        }
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if let index = tabBar.items?.firstIndex(of: item), let imageView = getImageView(forIndex: index), index != selectedIndex {
+            animate(imageView)
+        }
+    }
+    
+    private func getImageView(forIndex index: Int) -> UIImageView? {
+        guard let tabBarButton = tabBar.subviews[index + 1] as? UIControl else { return nil }
+        
+        for subview in tabBarButton.subviews {
+            if let imageView = subview as? UIImageView { return imageView }
+        }
+        return nil
+        
     }
 }
 
@@ -39,9 +76,9 @@ private extension UITabBar {
         appearence.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AccentColors.selectedColor]
 
         appearence.stackedLayoutAppearance.normal.iconColor = AccentColors.normalColor
-        appearence.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.font: UIFont.Montserrat.SemiBold.size(of: 10), .foregroundColor: AccentColors.normalColor]
+        appearence.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.font: UIFont.Montserrat.Regular.size(of: 10), .foregroundColor: UIColor.clear]
         
-        appearence.backgroundColor = AccentColors.tabBarColor
+        appearence.backgroundColor = AccentColors.interfaceColor
         self.scrollEdgeAppearance = appearence
         self.standardAppearance = appearence
         
@@ -63,7 +100,7 @@ private extension UITabBar {
         }
         
         self.itemPositioning = .centered
-        self.itemWidth = 70
+        self.itemWidth = 65
     }
 }
 

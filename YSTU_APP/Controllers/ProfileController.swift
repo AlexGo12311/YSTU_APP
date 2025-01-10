@@ -11,6 +11,7 @@ final class ProfileController: BaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Profile"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.Montserrat.SemiBold.size(of: 17)]
     }
 }

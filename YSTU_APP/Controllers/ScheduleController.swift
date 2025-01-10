@@ -9,15 +9,44 @@ import UIKit
 
 final class ScheduleController: BaseController {
     
+    private let navBar = ScheduleNavBar()
+    
     let scheduleFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.backgroundColor = AccentColors.bgColor
         return table
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getSchedule()
+//        getSchedule()
+//        getGruopList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navBar.scrollToCurrentWeek()
+        navBar.selectToday()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        navBar.layer.cornerRadius = 24
+        navBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        setShadow(navBar)
+        
+        NSLayoutConstraint.activate([
+            navBar.topAnchor.constraint(equalTo: view.topAnchor),
+            navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navBar.heightAnchor.constraint(equalToConstant: 134 + view.safeAreaInsets.top)
+        ])
     }
     
     private func getSchedule() {
@@ -31,14 +60,35 @@ final class ScheduleController: BaseController {
         }
     }
     
+    private func getGruopList() {
+        APICaller.shared.getGroupsList { results in
+            switch results {
+            case .success(let items):
+                print(items)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     override func addViews() {
         super.addViews()
         view.addSubview(scheduleFeedTable)
+        view.addSubview(navBar)
     }
     
     override func layoutViews() {
         super.layoutViews()
-        scheduleFeedTable.frame = view.bounds
+        
+        scheduleFeedTable.translatesAutoresizingMaskIntoConstraints = false
+        scheduleFeedTable.contentInsetAdjustmentBehavior = .never
+         
+        NSLayoutConstraint.activate([
+            scheduleFeedTable.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -12),
+            scheduleFeedTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scheduleFeedTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scheduleFeedTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
+        ])
     }
     
     override func configure() {
@@ -46,8 +96,6 @@ final class ScheduleController: BaseController {
         scheduleFeedTable.delegate = self
         scheduleFeedTable.dataSource = self
     }
-    
-
 }
 
 extension ScheduleController: UITableViewDelegate, UITableViewDataSource {
@@ -58,7 +106,7 @@ extension ScheduleController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "123"
+        cell.textLabel?.text = "Lorem ipsum dollar"
         return cell
     }
     
