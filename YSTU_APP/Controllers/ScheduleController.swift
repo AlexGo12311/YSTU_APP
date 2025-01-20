@@ -72,7 +72,7 @@ final class ScheduleController: BaseController {
     }
     
     private func addHeaderView() {
-        let header = ScheduleHeader(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
+        let header = ScheduleHeader(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 70))
         scheduleFeedTable.tableHeaderView = header
     }
     
@@ -100,6 +100,8 @@ final class ScheduleController: BaseController {
         super.configure()
         scheduleFeedTable.delegate = self
         scheduleFeedTable.dataSource = self
+        scheduleFeedTable.estimatedRowHeight = 137 // Примерное значение для улучшения производительности
+        scheduleFeedTable.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -108,7 +110,7 @@ final class ScheduleController: BaseController {
 extension ScheduleController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     
@@ -118,14 +120,36 @@ extension ScheduleController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
-        cell.configureTimeView(start: "00:00", end: "23:00")
-        cell.configureCourseView(name: "Математика (ВМ)", type: "Экзамен", room: "Б-107", teacher: "Ройтенберг Владимир Шлеймович")
-        return cell
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
+            cell.configureTimeView(start: "00:00", end: "23:00")
+            cell.configureCourseView(name: "Математика (ВМ)", type: "Экзамен", room: "Б-107", teacher: "Ройтенберг Владимир Шлеймович")
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
+            cell.configureTimeView(start: "00:00", end: "23:00")
+            cell.configureCourseView(name: "Математика (ВМ)", type: "Экзамен", room: "Б-107", teacher: "Ройтенберг Владимир Шлеймович")
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath) as? ScheduleTableViewCell else { return UITableViewCell() }
+            return cell
+        }
     }
+
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        print("Height for row: \(tableView.rowHeight)")
+//        return UITableView.automaticDimension
+//    }
+
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 137
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16 // расстояние между строками
     }
     
 }

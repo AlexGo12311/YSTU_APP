@@ -13,7 +13,7 @@ class TimeView: UIView {
     private var startTimeLabel: UILabel = {
         var label = UILabel()
         label.textColor = AccentColors.ordinaryTextColor
-        label.font = .Montserrat.Medium.size(of: 16)
+        label.font = .Montserrat.Medium.size(of: 14)
         
         return label
     }()
@@ -31,17 +31,23 @@ class TimeView: UIView {
         configureTimeView()
         startTimeLabel.text = "n/a"
         endTimeLabel.text = "n/a"
-        
-        let rightBorder = CALayer()
-        rightBorder.backgroundColor = AccentColors.normalColor.cgColor
-        rightBorder.frame = CGRect(x: self.frame.width - 2, y: 0, width: 2, height: self.frame.height)
-        self.layer.addSublayer(rightBorder)
         self.backgroundColor = AccentColors.bgColor
 
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        addRightBorder()
+    }
+    
+    func addRightBorder() {
+        let rightBorder = CALayer()
+        rightBorder.backgroundColor = AccentColors.normalColor.withAlphaComponent(0.1).cgColor
+        rightBorder.frame = CGRect(x: self.frame.width - 2, y: 0, width: 2, height: self.frame.height)
+        self.layer.addSublayer(rightBorder)
     }
     
     func updateView(start: String?, end: String?) {
@@ -58,7 +64,7 @@ class TimeView: UIView {
         startTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            startTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            startTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 28),
             startTimeLabel.widthAnchor.constraint(equalTo: self.widthAnchor)
         ])
         
@@ -66,7 +72,7 @@ class TimeView: UIView {
         endTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            endTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            endTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 28),
             endTimeLabel.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor)
         ])
     }

@@ -65,7 +65,7 @@ private extension ScheduleTableViewCell {
             timeView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
             timeView.topAnchor.constraint(equalTo: cellView.topAnchor),
             timeView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
-            timeView.widthAnchor.constraint(equalToConstant: 80)
+            timeView.widthAnchor.constraint(equalToConstant: 82)
         ])
         
         cellView.addSubview(courseView)
