@@ -11,6 +11,7 @@ class CourseView: UIView {
         var label = UILabel()
         label.textColor = AccentColors.ordinaryTextColor
         label.font = .Montserrat.SemiBold.size(of: 16)
+        label.numberOfLines = 0
         
         return label
     }()
@@ -89,66 +90,52 @@ class CourseView: UIView {
 
 private extension CourseView {
     func configureLayout() {
-        configureTeacherNameLabel()
-        configureRoomLabel()
         configureCourseNameLabel()
         configureCourceTypeLabel()
+        configureRoomLabel()
+        configureTeacherNameLabel()
+
+        // Привязка нижнего элемента к нижней границе
+        NSLayoutConstraint.activate([
+            teacherNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
+        ])
     }
-    
+
     func configureCourseNameLabel() {
         addSubview(courseNameLabel)
         courseNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             courseNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            courseNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+            courseNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            courseNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         ])
     }
-    
+
     func configureCourceTypeLabel() {
         addSubview(courceTypeLabel)
         courceTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             courceTypeLabel.topAnchor.constraint(equalTo: courseNameLabel.bottomAnchor, constant: 4),
-            courceTypeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+            courceTypeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            courceTypeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         ])
     }
-    
-    func configureTeacherNameLabel() {
 
-        
-        addSubview(teacherNameLabel)
-        teacherNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            teacherNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
-            teacherNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -80)
-        ])
-        
-        addSubview(teacherImage)
-        teacherImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            teacherImage.centerYAnchor.constraint(equalTo: teacherNameLabel.centerYAnchor),
-            teacherImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            teacherImage.widthAnchor.constraint(equalToConstant: 16),
-            teacherImage.heightAnchor.constraint(equalToConstant: 16),
-            teacherNameLabel.leadingAnchor.constraint(equalTo: teacherImage.trailingAnchor, constant: 10)
-        ])
-    }
-    
     func configureRoomLabel() {
         addSubview(roomLabel)
         roomLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
-            roomLabel.bottomAnchor.constraint(equalTo: teacherNameLabel.topAnchor, constant: -9),
+            roomLabel.topAnchor.constraint(equalTo: courceTypeLabel.bottomAnchor, constant: 16),
+            
+            roomLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         ])
-        
+
         addSubview(locationImageView)
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             locationImageView.centerYAnchor.constraint(equalTo: roomLabel.centerYAnchor),
             locationImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -157,8 +144,28 @@ private extension CourseView {
             roomLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 10)
         ])
     }
-}
 
+    func configureTeacherNameLabel() {
+        addSubview(teacherNameLabel)
+        teacherNameLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            teacherNameLabel.topAnchor.constraint(equalTo: roomLabel.bottomAnchor, constant: 8),
+            teacherNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
+        ])
+
+        addSubview(teacherImage)
+        teacherImage.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            teacherImage.centerYAnchor.constraint(equalTo: teacherNameLabel.centerYAnchor),
+            teacherImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            teacherImage.widthAnchor.constraint(equalToConstant: 16),
+            teacherImage.heightAnchor.constraint(equalToConstant: 16),
+            teacherNameLabel.leadingAnchor.constraint(equalTo: teacherImage.trailingAnchor, constant: 10)
+        ])
+    }
+}
 
 
 //#Preview("CourseView", traits: .fixedLayout(width: 250, height: 137)) {

@@ -14,19 +14,12 @@ class ScheduleTableViewCell: UITableViewCell {
     private let cellView: UIView = {
         let view = UIView()
         view.backgroundColor = AccentColors.bgColor
-        
         return view
     }()
     
-    
-    // MARK: - Time view
     private var timeView = TimeView()
-    
-    // MARK: - Cource view things
     private var courseView = CourseView()
     
-    
-    // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .clear
@@ -36,7 +29,6 @@ class ScheduleTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     override func layoutSubviews() {
         cellView.frame = contentView.bounds
@@ -50,21 +42,27 @@ class ScheduleTableViewCell: UITableViewCell {
     func configureCourseView(name: String?, type: String?, room: String?, teacher: String?) {
         courseView.updateView(name: name, type: type, room: room, teacher: teacher)
     }
-
-
 }
 
 private extension ScheduleTableViewCell {
     func configureCellView() {
-        addSubview(cellView)
+        contentView.addSubview(cellView)
+        cellView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            cellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cellView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
         
         cellView.addSubview(timeView)
         timeView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            timeView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
-            timeView.topAnchor.constraint(equalTo: cellView.topAnchor),
-            timeView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
+            timeView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 16),
+            timeView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 8),
+            timeView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -8),
             timeView.widthAnchor.constraint(equalToConstant: 82)
         ])
         
@@ -73,9 +71,9 @@ private extension ScheduleTableViewCell {
         
         NSLayoutConstraint.activate([
             courseView.leadingAnchor.constraint(equalTo: timeView.trailingAnchor, constant: 16),
-            courseView.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -28),
-            courseView.topAnchor.constraint(equalTo: cellView.topAnchor),
-            courseView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
+            courseView.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -16),
+            courseView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 8),
+            courseView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -8),
         ])
     }
 }

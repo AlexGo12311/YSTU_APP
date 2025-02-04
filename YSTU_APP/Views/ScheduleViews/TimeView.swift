@@ -59,21 +59,22 @@ class TimeView: UIView {
     }
     
     private func configureTimeView() {
-        
         addSubview(startTimeLabel)
         startTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
-            startTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 28),
-            startTimeLabel.widthAnchor.constraint(equalTo: self.widthAnchor)
+            startTimeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            startTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            startTimeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         ])
-        
+
         addSubview(endTimeLabel)
         endTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
-            endTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 28),
-            endTimeLabel.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor)
+            endTimeLabel.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor, constant: 4),
+            endTimeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            endTimeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         ])
     }
     
