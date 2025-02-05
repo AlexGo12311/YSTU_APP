@@ -70,7 +70,7 @@ private extension ScheduleTableViewCell {
         courseView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            courseView.leadingAnchor.constraint(equalTo: timeView.trailingAnchor, constant: 16),
+            courseView.leadingAnchor.constraint(equalTo: timeView.trailingAnchor, constant: 4),
             courseView.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -16),
             courseView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 8),
             courseView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -8),

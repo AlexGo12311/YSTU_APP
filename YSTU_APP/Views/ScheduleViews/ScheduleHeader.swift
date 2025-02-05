@@ -40,7 +40,7 @@ extension ScheduleHeader {
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             timeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 28),
-            timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
+            timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6)
         ])
     }
     
@@ -48,8 +48,8 @@ extension ScheduleHeader {
         addSubview(courceLabel)
         courceLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            courceLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 34),
-            courceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
+            courceLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 34 + 4),
+            courceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6)
         ])
     }
 }

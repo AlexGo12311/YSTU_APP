@@ -39,17 +39,6 @@ class TimeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        addRightBorder()
-    }
-    
-    func addRightBorder() {
-        let rightBorder = CALayer()
-        rightBorder.backgroundColor = AccentColors.normalColor.withAlphaComponent(0.1).cgColor
-        rightBorder.frame = CGRect(x: self.frame.width - 2, y: 0, width: 2, height: self.frame.height)
-        self.layer.addSublayer(rightBorder)
-    }
-    
     func updateView(start: String?, end: String?) {
         guard let start = start else { return }
         startTimeLabel.text = start
